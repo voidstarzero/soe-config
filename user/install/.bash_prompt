@@ -9,10 +9,12 @@ BLUE="\[\033[01;34m\]"
 SMILEY="${WHITE}:)${NORMAL}"
 FROWNY="${RED}:(${NORMAL}"
 
-if [[ -n "$SSH_CONNECTION" ]]; then
-    HOSTCOLOUR="${YELLOW}"
-else
+if [[ -z "$SSH_CONNECTION" ]]; then
     HOSTCOLOUR="${GREEN}"
+elif hostname --fqdn | grep -qF 'ucc.gu.uwa.edu.au'; then
+    HOSTCOLOUR="${RED}"
+else
+    HOSTCOLOUR="${YELLOW}"
 fi
 
 SELECT="if [ \$? -eq 0 ]; then echo \"${SMILEY}\"; else echo \"${FROWNY}\"; fi"
