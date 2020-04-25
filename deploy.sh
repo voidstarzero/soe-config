@@ -8,9 +8,11 @@ function do_deploy
 {
 	case $1 in
     system)
-        destpath="/";;
+        destpath="/"
+        ;;
     user)
-        destpath="$HOME/";;
+        destpath="$HOME/"
+        ;;
     esac
 
     if [[ -d "install" ]];
