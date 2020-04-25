@@ -10,12 +10,12 @@ function do_deploy
     system)
         destpath="/";;
     user)
-        destpath="$HOME";;
+        destpath="$HOME/";;
     esac
 
-    if [[ -d install ]];
+    if [[ -d "install" ]];
     then
-        echo "Installing to" "$destpath"
+        cp -RT "install/" "$destpath"
     fi
 }
 
