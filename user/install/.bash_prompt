@@ -1,0 +1,20 @@
+RESET="\[\017\]"
+NORMAL="\[\033[0m\]"
+RED="\[\033[31;1m\]"
+YELLOW="\[\033[33;1m\]"
+WHITE="\[\033[37;1m\]"
+GREEN="\[\033[01;32m\]"
+BLUE="\[\033[01;34m\]"
+
+SMILEY="${WHITE}:)${NORMAL}"
+FROWNY="${RED}:(${NORMAL}"
+
+if [[ -n "$SSH_CONNECTION" ]]; then
+    HOSTCOLOUR="${YELLOW}"
+else
+    HOSTCOLOUR="${GREEN}"
+fi
+
+SELECT="if [ \$? -eq 0 ]; then echo \"${SMILEY}\"; else echo \"${FROWNY}\"; fi"
+
+PS1="${WHITE}\u@${HOSTCOLOUR}\h${NORMAL} \`${SELECT}\`${NORMAL} ${BLUE}\w${NORMAL}\n${BLUE}\$${NORMAL} "
