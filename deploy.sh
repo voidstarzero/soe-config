@@ -1,11 +1,35 @@
 #!/usr/bin/env bash
 
-echo -n "Deploying Linux SOE for account '${USER}' ... " 1>&2
+echo "Deploying Linux SOE for account '${USER}' ..." 1>&2
 
 #######################################################################
 
-# TODO: Add SOE setup steps
+function do_deploy
+{
+	case $1 in
+    system)
+        destpath="/";;
+    user)
+        destpath="$HOME";;
+    esac
+
+    if [[ -d install ]];
+    then
+        echo "Installing to" "$destpath"
+    fi
+}
+
+for mode in \
+    system user
+do
+	if [[ -d ./${mode} ]]
+    then
+        cd ${mode}
+        do_deploy ${mode}
+        cd ..
+    fi
+done
 
 #######################################################################
 
-echo "done!" 1>&2
+echo "Done!" 1>&2
