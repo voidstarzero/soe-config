@@ -15,7 +15,7 @@ function do_deploy
 
     if [[ -d "install" ]];
     then
-        cp -RT "install/" "$destpath"
+        cp -RTL "install/" "$destpath"
     fi
 
     if [[ -d "scripts" ]];
