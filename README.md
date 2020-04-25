@@ -1,2 +1,2 @@
 # soe-config
-Standard config files to deploy to new Linux installs
+Standard config files and scripts to deploy to new Linux installs

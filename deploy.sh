@@ -17,6 +17,11 @@ function do_deploy
     then
         cp -RT "install/" "$destpath"
     fi
+
+    if [[ -d "scripts" ]];
+    then
+        find -L "scripts" -type f -executable -exec bash {} ';'
+    fi
 }
 
 for mode in \
