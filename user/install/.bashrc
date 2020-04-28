@@ -123,3 +123,5 @@ if ! shopt -oq posix; then
 fi
 
 export LC_COLLATE=C
+
+alias apt=aptrecord.sh
