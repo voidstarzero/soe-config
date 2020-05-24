@@ -3,3 +3,5 @@
 	email = jimbo@ucc.asn.au
 [pull]
 	rebase = true
+[alias]
+	last = diff HEAD^ HEAD
