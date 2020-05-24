@@ -11,7 +11,7 @@ FROWNY="${RED}:(${NORMAL}"
 
 if [[ -z "$SSH_CONNECTION" ]]; then
     HOSTCOLOUR="${GREEN}"
-elif hostname --fqdn | grep -qF 'ucc.gu.uwa.edu.au'; then
+elif hostname --fqdn | grep -qE 'ucc[.](asn|gu[.]uwa[.]edu)[.]au'; then
     HOSTCOLOUR="${RED}"
 else
     HOSTCOLOUR="${YELLOW}"
