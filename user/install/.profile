@@ -30,3 +30,6 @@ fi
 if [ -z "$SSH_AGENT_PID" ]; then
     eval `ssh-agent`
 fi
+
+# setup the ssh agent to die when we logout
+trap 'test -n "$SSH_AGENT_PID" && eval `ssh-agent -k`' 0
