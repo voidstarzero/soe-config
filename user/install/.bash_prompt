@@ -11,10 +11,14 @@ FROWNY="${RED}:(${NORMAL}"
 
 if [[ -z "$SSH_CONNECTION" ]]; then
     HOSTCOLOUR="${GREEN}"
-elif hostname --fqdn | grep -qE 'ucc[.](asn|gu[.]uwa[.]edu)[.]au'; then
-    HOSTCOLOUR="${RED}"
 else
-    HOSTCOLOUR="${YELLOW}"
+    HOSTPART="$(hostname)"
+    ALLNAMES="$(hostname -A | tr ' ' '\n')"
+    if echo "$ALLNAMES" | grep "^$HOSTPART.*arccos\.me$"; then
+        HOSTCOLOUR="${YELLOW}"
+    else
+        HOSTCOLOUR="${RED}"
+    fi
 fi
 
 SELECT="if [ \$? -eq 0 ]; then echo \"${SMILEY}\"; else echo \"${FROWNY}\"; fi"
