@@ -10,6 +10,3 @@ set expandtab
 " Syntax highlighting is nice
 filetype indent plugin on
 syntax on
-
-" Default to < 80 character line wrapping
-set textwidth=79
