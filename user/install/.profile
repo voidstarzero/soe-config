@@ -33,3 +33,10 @@ fi
 
 # setup the ssh agent to die when we logout
 trap 'test -n "$SSH_AGENT_PID" && eval `ssh-agent -k`' 0
+
+# start x11 if on /dev/tty1 of an xinit-based system
+if [ -f ~/.xinitrc ] && [ "x$XDG_SESSION_TYPE" == xtty ] && [ "x$XDG_VTNR" == x1 ]; then
+    # pause for 2 seconds to solve race with amdgpu initialization
+    sleep 2
+    startx
+fi
