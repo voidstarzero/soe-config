@@ -13,8 +13,8 @@ if [[ -z "$SSH_CONNECTION" ]]; then
     HOSTCOLOUR="${GREEN}"
 else
     HOSTPART="$(hostname)"
-    ALLNAMES="$(hostname -A | tr ' ' '\n')"
-    if echo "$ALLNAMES" | grep "^$HOSTPART.*arccos\.me$"; then
+    ALLNAMES="$((hostname -A || hostname -f) 2> /dev/null | tr ' ' '\n')"
+    if echo "$ALLNAMES" | grep -q "^$HOSTPART.*arccos\.me$"; then
         HOSTCOLOUR="${YELLOW}"
     else
         HOSTCOLOUR="${RED}"
