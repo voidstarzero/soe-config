@@ -23,4 +23,4 @@ fi
 
 SELECT="if [ \$? -eq 0 ]; then echo \"${SMILEY}\"; else echo \"${FROWNY}\"; fi"
 
-PS1="${WHITE}\u@${HOSTCOLOUR}\h${NORMAL} \`${SELECT}\`${NORMAL} ${BLUE}\w${NORMAL}\n${BLUE}\$${NORMAL} "
+PS1="${BLUE}[\t]${NORMAL} ${WHITE}\u@${HOSTCOLOUR}\h${NORMAL} \`${SELECT}\`${NORMAL} ${BLUE}\w${NORMAL}\n${BLUE}\$${NORMAL} "
