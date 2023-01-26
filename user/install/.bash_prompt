@@ -9,12 +9,15 @@ BLUE="\[\033[01;34m\]"
 SMILEY="${WHITE}:)${NORMAL}"
 FROWNY="${RED}:(${NORMAL}"
 
+# List of all related domains
+DOMAINS=('arccos\.me' 'threei\.au')
+printf -v DOMAINS '%s|' "${DOMAINS[@]}"
+
 if [[ -z "$SSH_CONNECTION" ]]; then
     HOSTCOLOUR="${GREEN}"
 else
-    HOSTPART="$(hostname)"
     ALLNAMES="$((hostname -f; hostname -A) 2> /dev/null | tr ' ' '\n')"
-    if echo "$ALLNAMES" | grep -q "^$HOSTPART.*arccos\.me$"; then
+    if echo "$ALLNAMES" | egrep -q "(${DOMAINS%|})$"; then
         HOSTCOLOUR="${YELLOW}"
     else
         HOSTCOLOUR="${RED}"
