@@ -125,3 +125,5 @@ fi
 export LC_COLLATE=C
 
 alias apt=aptrecord.sh
+
+export DOTNET_CLI_TELEMETRY_OPTOUT=1
